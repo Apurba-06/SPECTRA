@@ -1273,7 +1273,7 @@ class SignalAnalyzerApp(ctk.CTk):
     def _save_as_pdf(self, filepath: str, timestamp: str):
         """
         100% Pure-Python Vector PDF 1.4 Generator (5 Pages).
-        Zero Matplotlib, zero PIL, zero C-extensions — writes vector PDF commands directly to disk.
+        Zero Matplotlib, zero PIL, zero C-extensions - writes vector PDF commands directly to disk.
         """
         if self._cached_freqs is None:
             plot_samples = self.samples[:150000] if len(self.samples) > 150000 else self.samples
@@ -1416,7 +1416,7 @@ class SignalAnalyzerApp(ctk.CTk):
                 ty += 13.0
 
         p1.append(
-            text_cmd(235, 578, "SPECTRA SIGINT Automated Mission Report  —  Page 1 of 5 (Executive Telemetry Dossier)", "F1", 8.5, "#6C8EAD")
+            text_cmd(235, 578, "SPECTRA SIGINT Automated Mission Report  -  Page 1 of 5 (Executive Telemetry Dossier)", "F1", 8.5, "#6C8EAD")
         )
         page_streams.append("\n".join(p1))
 
@@ -1443,7 +1443,7 @@ class SignalAnalyzerApp(ctk.CTk):
             cmds.append(text_cmd(bx + bw / 2.0 - 45, by + bh + 26, x_lbl, "F2", 10.5, "#00FFCC"))
             cmds.append(text_cmd(18, by + bh / 2.0, y_lbl, "F2", 10.0, "#00FFCC"))
             cmds.append(
-                text_cmd(235, 578, f"SPECTRA SIGINT Automated Mission Report  —  Page {page_no} of 5 ({title_str})", "F1", 8.5, "#6C8EAD")
+                text_cmd(235, 578, f"SPECTRA SIGINT Automated Mission Report  -  Page {page_no} of 5 ({title_str})", "F1", 8.5, "#6C8EAD")
             )
             return cmds
 
@@ -1451,7 +1451,7 @@ class SignalAnalyzerApp(ctk.CTk):
         # PAGE 2: DEDICATED SPECTRUM PLOT (VECTOR POLYLINE)
         # =========================================================================
         bx, by, bw, bh = 80.0, 92.0, 710.0, 430.0
-        p2 = build_plot_frame(2, "PLOT 1 OF 4 — POWER SPECTRAL DENSITY (SPECTRUM)", "Frequency (kHz)", "Mag (dB)")
+        p2 = build_plot_frame(2, "PLOT 1 OF 4 - POWER SPECTRAL DENSITY (SPECTRUM)", "Frequency (kHz)", "Mag (dB)")
         freqs_k = np.nan_to_num(self._cached_freqs / 1e3, nan=0.0, posinf=0.0, neginf=0.0)
         spec_arr = np.nan_to_num(self._cached_spec, nan=0.0, posinf=0.0, neginf=0.0)
         if len(freqs_k) > 1:
@@ -1476,7 +1476,7 @@ class SignalAnalyzerApp(ctk.CTk):
         # =========================================================================
         # PAGE 3: DEDICATED WATERFALL SPECTROGRAM (VECTOR HEATMAP GRID)
         # =========================================================================
-        p3 = build_plot_frame(3, "PLOT 2 OF 4 — TIME-FREQUENCY WATERFALL SPECTROGRAM", "Time (s)", "Freq (kHz)")
+        p3 = build_plot_frame(3, "PLOT 2 OF 4 - TIME-FREQUENCY WATERFALL SPECTROGRAM", "Time (s)", "Freq (kHz)")
         sxx = np.nan_to_num(self._cached_sxx, nan=0.0, posinf=0.0, neginf=0.0)
         if sxx.ndim == 2 and sxx.size > 0:
             n_f, n_t = sxx.shape
@@ -1506,7 +1506,7 @@ class SignalAnalyzerApp(ctk.CTk):
         # =========================================================================
         cbx, cby, cbw, cbh = 210.0, 92.0, 430.0, 430.0
         p4 = build_plot_frame(
-            4, "PLOT 3 OF 4 — IQ CONSTELLATION DIAGRAM", "In-Phase (I)", "Quad (Q)", box=(cbx, cby, cbw, cbh)
+            4, "PLOT 3 OF 4 - IQ CONSTELLATION DIAGRAM", "In-Phase (I)", "Quad (Q)", box=(cbx, cby, cbw, cbh)
         )
         cx, cy = cbx + cbw / 2.0, cby + cbh / 2.0
         p4.append(line_cmd(cx, cby, cx, cby + cbh, "#3A506B", 1.2))
@@ -1533,7 +1533,7 @@ class SignalAnalyzerApp(ctk.CTk):
         # =========================================================================
         n_show = min(int(self.time_samples_var.get()), len(self.samples), 600)
         p5 = build_plot_frame(
-            5, f"PLOT 4 OF 4 — TIME DOMAIN I/Q WAVEFORM (FIRST {n_show} SAMPLES)", "Time (s)", "Amplitude"
+            5, f"PLOT 4 OF 4 - TIME DOMAIN I/Q WAVEFORM (FIRST {n_show} SAMPLES)", "Time (s)", "Amplitude"
         )
         sig_slice = self.samples[:n_show]
         if len(sig_slice) > 1:
@@ -1549,8 +1549,8 @@ class SignalAnalyzerApp(ctk.CTk):
             p5.append(polyline_cmd(xs, yq_top, "#FF00FF", 1.1))
             p5.append(polyline_cmd(xs, yi_top, "#00FF66", 1.1))
             p5.append(rect_cmd(bx + bw - 185, by + 10, 175, 36, fill_hex="#0B192C", stroke_hex="#3A506B", lw=0.8))
-            p5.append(text_cmd(bx + bw - 175, by + 24, "I (In-Phase) — Neon Green", "F2", 8.5, "#00FF66"))
-            p5.append(text_cmd(bx + bw - 175, by + 39, "Q (Quadrature) — Magenta", "F2", 8.5, "#FF00FF"))
+            p5.append(text_cmd(bx + bw - 175, by + 24, "I (In-Phase) - Neon Green", "F2", 8.5, "#00FF66"))
+            p5.append(text_cmd(bx + bw - 175, by + 39, "Q (Quadrature) - Magenta", "F2", 8.5, "#FF00FF"))
         page_streams.append("\n".join(p5))
 
         # =========================================================================
