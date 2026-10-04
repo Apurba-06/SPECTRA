@@ -42,3 +42,9 @@ Frames with >30 % bit errors are counted as receiver lock failures (listed in th
 `web/` is a static site (no backend) that displays the receiver's measured results on the five demo captures plus the BER curves.
 Regenerate its data with `python build_site.py`; deploy on Vercel with **Root Directory = `web`** (framework: Other).
 The live, interactive tool is the desktop app (`python main.py`).
+
+## For judges - three ways to see the full application
+1. **Live web version (no install):** `streamlit_app.py` runs the same backend in a browser - upload a .wav/.iq or pick a bundled capture,
+   click *Run full pipeline* and walk through all 8 tabs. Deployed from this repo via the included `Dockerfile` (Hugging Face Spaces / Render).
+2. **Windows app:** download `SPECTRA-Windows.zip` from the *Releases* page (built by GitHub Actions), unzip, run `SPECTRA.exe`.
+3. **From source:** `pip install -r requirements.txt` then `python main.py` (desktop GUI) or `streamlit run streamlit_app.py` (web).
