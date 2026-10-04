@@ -37,3 +37,8 @@ soft demap -> decoder). Curves: uncoded QPSK (with theory overlay), Conv K=7 har
 Results are stored in `results/ber_vs_snr.png`, `ber_vs_snr_dark.png` (for slides) and `ber_vs_snr.csv`.
 Frames with >30 % bit errors are counted as receiver lock failures (listed in the CSV, hollow markers), not as BER.
 `python benchmark.py --quick` finishes in seconds; the Tab 8 buttons run the same code.
+
+## Web showcase (Vercel)
+`web/` is a static site (no backend) that displays the receiver's measured results on the five demo captures plus the BER curves.
+Regenerate its data with `python build_site.py`; deploy on Vercel with **Root Directory = `web`** (framework: Other).
+The live, interactive tool is the desktop app (`python main.py`).
